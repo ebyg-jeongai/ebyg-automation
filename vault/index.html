@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Document Vault — Jeong AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/vault.css">
+  <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <span class="logo-jai">Jeong</span><span class="logo-auto">AI</span>
+      </a>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/vault" class="active">Vault</a></li>
+          <li><a href="/.auth/logout" class="nav-cta">Sign Out</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== VAULT CONTENT ========== -->
+  <main class="vault-main">
+    <div class="container">
+
+      <div class="vault-header">
+        <h1>Document Vault</h1>
+        <p class="vault-sub">Secure document repository for Jeong AI. Only authenticated users can access this area.</p>
+        <div class="vault-user" id="vault-user"></div>
+      </div>
+
+      <!-- Upload hint for admin -->
+      <div class="vault-info">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5M10 6.5v.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span>To add documents, place files in the <code>/vault/docs/</code> folder and update the file list below.</span>
+      </div>
+
+      <!-- Document Categories -->
+      <section class="vault-section">
+        <h2>Templates & Letterheads</h2>
+        <div class="vault-grid" id="templates-grid">
+          <a href="/vault/docs/templates/HR-AI-Prompt-Building-Guide.pdf" class="vault-card" target="_blank">
+            <div class="vault-card-icon pdf">PDF</div>
+            <div class="vault-card-info">
+              <h3>AI Prompt Building for HR Managers</h3>
+              <p class="vault-card-meta">2 pages &middot; CRAFT framework &middot; Ready-to-use templates</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="vault-section">
+        <h2>Proposals & Contracts</h2>
+        <div class="vault-grid" id="proposals-grid">
+          <p class="vault-empty">No documents yet. Add files to <code>/vault/docs/proposals/</code> to get started.</p>
+        </div>
+      </section>
+
+      <section class="vault-section">
+        <h2>Reports & Deliverables</h2>
+        <div class="vault-grid" id="reports-grid">
+          <p class="vault-empty">No documents yet. Add files to <code>/vault/docs/reports/</code> to get started.</p>
+        </div>
+      </section>
+
+      <section class="vault-section">
+        <h2>Internal Resources</h2>
+        <div class="vault-grid" id="internal-grid">
+          <p class="vault-empty">No documents yet. Add files to <code>/vault/docs/internal/</code> to get started.</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="vault-footer">
+    <div class="container">
+      <p>&copy; 2026 Jeong AI — a division of EBYG Media LLC</p>
+    </div>
+  </footer>
+
+  <script>
+    // Fetch authenticated user info from Azure SWA
+    async function loadUser() {
+      try {
+        const res = await fetch('/.auth/me');
+        const data = await res.json();
+        const user = data.clientPrincipal;
+        if (user) {
+          document.getElementById('vault-user').innerHTML =
+            `<span class="user-badge">Signed in as <strong>${user.userDetails}</strong> via ${user.identityProvider}</span>`;
+        }
+      } catch (e) {
+        // Auth endpoint not available locally
+      }
+    }
+    loadUser();
+  </script>
+
+</body>
+</html>
