@@ -1035,38 +1035,29 @@ blockquote {
   line-height: 1.5;
 }
 
-/* ---------- COMPETITIVE ADVANTAGE ---------- */
-.advantage {
-  padding: 6rem 0;
+/* ---------- CONVICTION ---------- */
+.conviction {
+  padding: 7rem 0;
+  background: #f2ede3;
 }
-.advantage-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
+.conviction-inner {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
 }
-.advantage-content p { margin-bottom: 1rem; }
-.advantage-points {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+.conviction-statement {
+  font-size: 2.6rem;
+  line-height: 1.35;
+  margin-bottom: 1.5rem;
+  color: var(--dark);
 }
-.advantage-point {
-  display: flex;
-  gap: 1.25rem;
-  align-items: flex-start;
+.conviction-sub {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  line-height: 1.75;
+  max-width: 520px;
+  margin: 0 auto;
 }
-.advantage-num {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary);
-  opacity: 0.25;
-  flex-shrink: 0;
-  line-height: 1.2;
-}
-.advantage-point h4 { margin-bottom: 0.35rem; }
-.advantage-point p { font-size: 0.93rem; color: var(--text-light); }
 
 /* ---------- CTA / CONTACT ---------- */
 .cta-section {
@@ -1305,7 +1296,6 @@ blockquote {
   .steps-grid { grid-template-columns: repeat(2, 1fr); }
   .industries-grid { grid-template-columns: repeat(2, 1fr); }
   .support-layout { grid-template-columns: 1fr; }
-  .advantage-inner { grid-template-columns: 1fr; }
   .cta-box { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .ecosystem-brands { flex-direction: column; max-width: 500px; }
@@ -1328,7 +1318,7 @@ blockquote {
 
   /* Section padding reduction */
   .about, .friction, .ecosystem, .what-we-build, .custom-software, .products, .services,
-  .support, .how-it-works, .industries, .advantage,
+  .support, .how-it-works, .industries, .conviction,
   .cta-section, .web-services { padding: 4rem 0; }
   .section-center { margin-bottom: 2.5rem; }
 
@@ -1383,7 +1373,7 @@ blockquote {
 
   /* Section padding further reduced */
   .about, .friction, .ecosystem, .what-we-build, .custom-software, .products, .services,
-  .support, .how-it-works, .industries, .advantage,
+  .support, .how-it-works, .industries, .conviction,
   .cta-section, .web-services { padding: 3rem 0; }
   .section-center { margin-bottom: 2rem; }
   .cs-callout { position: static; margin-top: 2rem; }
@@ -1393,7 +1383,6 @@ blockquote {
   .cta-form-wrap { padding: 1.5rem 1.25rem; }
   .cta-box { gap: 2.5rem; }
   .support-layout { gap: 2.5rem; }
-  .advantage-inner { gap: 2.5rem; }
 
   /* Buttons full-width on small screens */
   .product-card .btn, .service-card .btn { width: 100%; text-align: center; }
