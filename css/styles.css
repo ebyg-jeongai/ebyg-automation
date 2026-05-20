@@ -1287,6 +1287,7 @@ blockquote {
   h1 { font-size: 2.6rem; }
   h2 { font-size: 2rem; }
   .friction-grid { grid-template-columns: repeat(2, 1fr); }
+  .osfa-grid { grid-template-columns: 1fr; }
   .wwb-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .cs-inner { grid-template-columns: 1fr; }
   .cs-callout { position: static; }
@@ -1317,10 +1318,12 @@ blockquote {
   .hero-actions .btn { width: 100%; text-align: center; }
 
   /* Section padding reduction */
-  .about, .friction, .ecosystem, .what-we-build, .custom-software, .products, .services,
+  .about, .friction, .what-we-build, .custom-software, .osfa, .products, .services,
   .support, .how-it-works, .industries, .conviction,
   .cta-section, .web-services { padding: 4rem 0; }
   .section-center { margin-bottom: 2.5rem; }
+  .conviction-statement { font-size: 2rem; }
+  .osfa-heading { font-size: 1.85rem; }
 
   /* CTA form */
   .cta-form-wrap { padding: 1.75rem; }
@@ -1372,11 +1375,13 @@ blockquote {
   .jeong-symbol { font-size: 3.5rem; }
 
   /* Section padding further reduced */
-  .about, .friction, .ecosystem, .what-we-build, .custom-software, .products, .services,
+  .about, .friction, .what-we-build, .custom-software, .osfa, .products, .services,
   .support, .how-it-works, .industries, .conviction,
   .cta-section, .web-services { padding: 3rem 0; }
   .section-center { margin-bottom: 2rem; }
-  .cs-callout { position: static; margin-top: 2rem; }
+  .cs-callout { position: static; margin-top: 2rem; padding: 1.75rem; }
+  .conviction-statement { font-size: 1.7rem; }
+  .osfa-heading { font-size: 1.5rem; }
 
   /* Cards & form */
   .product-card, .service-card, .web-card { padding: 2rem 1.5rem; }
