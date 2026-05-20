@@ -477,6 +477,75 @@ blockquote {
   border-radius: 4px;
 }
 
+/* ---------- CUSTOM SOFTWARE DEEP-DIVE ---------- */
+.custom-software {
+  padding: 6rem 0;
+  background: var(--dark);
+}
+.cs-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.cs-tag { color: rgba(255,255,255,0.45) !important; }
+.cs-heading {
+  color: var(--white);
+  margin-bottom: 2rem;
+  line-height: 1.25;
+}
+.cs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.cs-list li {
+  background: rgba(255,255,255,0.05);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+.cs-list h4 {
+  color: var(--white);
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+.cs-list p {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  margin: 0;
+}
+.cs-callout {
+  background: rgba(10,79,138,0.15);
+  border: 1px solid rgba(26,111,184,0.4);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  position: sticky;
+  top: calc(var(--header-h) + 2rem);
+}
+.cs-callout h3 {
+  color: var(--white);
+  font-size: 1.6rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.3;
+}
+.cs-callout p {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.93rem;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+.cs-btn {
+  color: rgba(255,255,255,0.8) !important;
+  border-color: rgba(255,255,255,0.3) !important;
+  margin-top: 0.5rem;
+}
+.cs-btn:hover {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: var(--white) !important;
+}
+
 /* ---------- FRICTION (Problem section) ---------- */
 .friction {
   padding: 6rem 0;
@@ -1228,6 +1297,7 @@ blockquote {
   h2 { font-size: 2rem; }
   .friction-grid { grid-template-columns: repeat(2, 1fr); }
   .wwb-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .cs-inner { grid-template-columns: 1fr; }
   .products-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .services-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .web-services-grid { grid-template-columns: 1fr; max-width: 480px; margin: 2rem auto 0; }
@@ -1256,7 +1326,7 @@ blockquote {
   .hero-actions .btn { width: 100%; text-align: center; }
 
   /* Section padding reduction */
-  .about, .friction, .ecosystem, .what-we-build, .products, .services,
+  .about, .friction, .ecosystem, .what-we-build, .custom-software, .products, .services,
   .support, .how-it-works, .industries, .advantage,
   .cta-section, .web-services { padding: 4rem 0; }
   .section-center { margin-bottom: 2.5rem; }
@@ -1311,10 +1381,11 @@ blockquote {
   .jeong-symbol { font-size: 3.5rem; }
 
   /* Section padding further reduced */
-  .about, .friction, .ecosystem, .what-we-build, .products, .services,
+  .about, .friction, .ecosystem, .what-we-build, .custom-software, .products, .services,
   .support, .how-it-works, .industries, .advantage,
   .cta-section, .web-services { padding: 3rem 0; }
   .section-center { margin-bottom: 2rem; }
+  .cs-callout { position: static; margin-top: 2rem; }
 
   /* Cards & form */
   .product-card, .service-card, .web-card { padding: 2rem 1.5rem; }
