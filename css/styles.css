@@ -1318,7 +1318,7 @@ blockquote {
   .hero-actions .btn { width: 100%; text-align: center; }
 
   /* Section padding reduction */
-  .about, .friction, .what-we-build, .custom-software, .osfa, .products, .services,
+  .about, .friction, .osfa, .what-we-build, .custom-software, .products, .services,
   .support, .how-it-works, .industries, .conviction,
   .cta-section, .web-services { padding: 4rem 0; }
   .section-center { margin-bottom: 2.5rem; }
@@ -1375,7 +1375,7 @@ blockquote {
   .jeong-symbol { font-size: 3.5rem; }
 
   /* Section padding further reduced */
-  .about, .friction, .what-we-build, .custom-software, .osfa, .products, .services,
+  .about, .friction, .osfa, .what-we-build, .custom-software, .products, .services,
   .support, .how-it-works, .industries, .conviction,
   .cta-section, .web-services { padding: 3rem 0; }
   .section-center { margin-bottom: 2rem; }
