@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Jeong AI, Web Presence Proposal for Nexsys Electric LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+/* ============================================================
+   Jeong AI, Brand Tokens & Document Foundation
+   Single source of truth for brand guidelines, invoices,
+   and proposals. Mirrors the design tokens in /css/styles.css.
+   A division of EBYG Media LLC.
+   ============================================================ */
+
+:root {
+  /* ---- Core palette ---- */
+  --primary:        #0a4f8a;  /* Jeong Blue, primary brand color */
+  --primary-dark:   #083d6b;  /* Deep blue, headers, emphasis */
+  --primary-light:  #1a6fb8;  /* Bright blue, links, hovers */
+  --accent:         #c7553b;  /* Terracotta, CTAs, highlights, accent rules */
+  --accent-hover:   #a8432d;
+
+  /* ---- Secondary / partnership ---- */
+  --purple:         #7C3AED;
+  --purple-mid:     #8B5CF6;
+  --purple-light:   #EDE9FE;
+  --purple-pale:    #F5F3FF;
+
+  /* ---- Neutrals ---- */
+  --dark:           #1a1a2e;  /* Headings */
+  --text:           #3a3a4a;  /* Body text */
+  --text-light:     #6b6b7b;  /* Secondary text, labels */
+  --light:          #f7f8fa;  /* Section / table backgrounds */
+  --white:          #ffffff;
+  --border:         #e2e4e8;
+
+  /* ---- Elevation ---- */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+
+  /* ---- Shape & motion ---- */
+  --radius:    6px;
+  --radius-lg: 12px;
+  --transition: 0.25s ease;
+
+  /* ---- Type ---- */
+  --font-heading: 'Montserrat', 'Segoe UI', sans-serif;
+  --font-body: 'Source Sans 3', 'Source Sans Pro', 'Segoe UI', sans-serif;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--light);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--dark);
+  line-height: 1.25;
+  font-weight: 600;
+}
+a { color: var(--primary); text-decoration: none; }
+
+/* ============================================================
+   WORDMARK, the Jeong AI logotype (text-only, no image asset)
+   ============================================================ */
+.jai-logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  font-family: var(--font-heading);
+  line-height: 1;
+}
+.jai-logo .jai-mark  { font-weight: 700; color: var(--primary); }
+.jai-logo .jai-auto  { font-weight: 500; color: var(--text-light); }
+/* Reversed (on dark backgrounds) */
+.jai-logo--reverse .jai-mark { color: var(--white); }
+.jai-logo--reverse .jai-auto { color: rgba(255,255,255,0.7); }
+.jai-division {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+/* ---- Lockups: brush mark (정) + wordmark ----
+   The mark height tracks the wordmark; set font-size on the container
+   and the mark scales with it via em units. */
+.jai-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  font-size: 2rem;            /* drives both mark + wordmark size */
+}
+.jai-lockup .jai-mark-img {
+  height: 1.5em;              /* mark ~1.5x the wordmark cap height */
+  width: auto;
+  display: block;
+}
+.jai-lockup .jai-logo { font-size: inherit; }
+/* Stacked variant */
+.jai-lockup--stack { flex-direction: column; gap: 0.4em; text-align: center; }
+.jai-lockup--stack .jai-mark-img { height: 2em; }
+/* Formal variant: vertical rule + endorsement */
+.jai-lockup--formal { gap: 0.7em; }
+.jai-lockup--formal .rule { width: 2px; align-self: stretch; background: var(--border); }
+.jai-lockup--formal .jai-division { margin-top: 0.2em; }
+
+/* Seal / tile (icon use) */
+.jai-seal {
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 22%;
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+}
+.jai-seal img { height: 64%; width: auto; }
+
+/* ============================================================
+   PRINT-READY DOCUMENT SHELL  (invoice + proposal)
+   US Letter, 0.75in margins, prints clean to PDF.
+   ============================================================ */
+.doc {
+  width: 8.5in;
+  min-height: 11in;
+  margin: 1.5rem auto;
+  padding: 0.75in;
+  background: var(--white);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+/* Top brand bar */
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 1.25rem;
+  border-bottom: 3px solid var(--primary);
+  margin-bottom: 0.4rem;
+}
+.doc-header .jai-logo { font-size: 1.9rem; }
+/* Terracotta accent rule under the primary border */
+.doc-accent-rule {
+  height: 3px;
+  background: var(--accent);
+  width: 90px;
+  margin-bottom: 2rem;
+}
+.doc-brand-contact {
+  text-align: right;
+  font-size: 0.78rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+.doc-brand-contact strong { color: var(--text); }
+
+/* Document title / meta */
+.doc-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+.doc-title {
+  font-size: 2rem;
+  color: var(--primary-dark);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.doc-meta { text-align: right; font-size: 0.85rem; line-height: 1.8; }
+.doc-meta .label {
+  color: var(--text-light);
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+.doc-meta .value { color: var(--dark); font-weight: 600; }
+
+/* Bill-to / parties */
+.doc-parties {
+  display: flex;
+  gap: 2.5rem;
+  margin-bottom: 2rem;
+}
+.party-block { flex: 1; }
+.party-label {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.party-name { font-weight: 600; color: var(--dark); font-size: 1.05rem; }
+.party-detail { font-size: 0.88rem; color: var(--text-light); line-height: 1.65; }
+
+/* Line-item table */
+.doc-table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+.doc-table thead th {
+  background: var(--primary);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: left;
+  padding: 0.7rem 0.9rem;
+}
+.doc-table thead th.num { text-align: right; }
+.doc-table tbody td {
+  padding: 0.85rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  vertical-align: top;
+}
+.doc-table tbody td.num { text-align: right; white-space: nowrap; }
+.doc-table tbody tr:nth-child(even) { background: var(--light); }
+.doc-table .item-title { font-weight: 600; color: var(--dark); }
+.doc-table .item-desc { font-size: 0.82rem; color: var(--text-light); margin-top: 0.2rem; }
+
+/* Totals */
+.doc-totals { width: 320px; margin-left: auto; }
+.doc-totals .row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.9rem;
+}
+.doc-totals .row.grand {
+  background: var(--primary-dark);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  border-radius: var(--radius);
+  margin-top: 0.4rem;
+}
+.doc-totals .row .label { color: inherit; }
+
+/* Notes / terms */
+.doc-section { margin-top: 2.25rem; }
+.doc-section h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+.doc-section p, .doc-section li { font-size: 0.88rem; color: var(--text); line-height: 1.7; }
+.doc-section ul { padding-left: 1.2rem; }
+
+/* Footer */
+.doc-footer {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+.doc-footer .tagline {
+  color: var(--accent);
+  font-style: italic;
+  margin-top: 0.3rem;
+}
+
+/* Editable hint, screen only */
+[contenteditable]:hover { outline: 1px dashed var(--border); }
+[contenteditable]:focus { outline: 2px solid var(--primary-light); background: var(--purple-pale); }
+
+/* ============================================================
+   DOCUMENT CONTENT COMPONENTS
+   For long-form branded documents (training, guides, reports,
+   SOWs). Used by the brandedjeong skill template.
+   ============================================================ */
+
+/* Cover band, full-bleed branded header for the first page */
+.doc-cover {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  color: var(--white);
+  margin: -0.75in -0.75in 2rem;
+  padding: 2.25in 0.75in 1.25in;
+}
+.doc-cover .doc-kicker {
+  font-family: var(--font-heading);
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: rgba(255,255,255,0.75);
+}
+.doc-cover h1 { color: var(--white); font-size: 2.6rem; margin: 0.75rem 0; max-width: 6.2in; }
+.doc-cover .subtitle { color: rgba(255,255,255,0.85); font-size: 1.05rem; max-width: 5.6in; }
+.doc-cover .accent { width: 90px; height: 3px; background: var(--accent); margin: 1.1rem 0; }
+.doc-cover .doc-meta-inline { font-size: 0.85rem; color: rgba(255,255,255,0.8); margin-top: 1.1rem; }
+.doc-cover .doc-meta-inline strong { color: var(--white); }
+
+/* Body typography for long-form content */
+.doc-body { font-size: 0.95rem; line-height: 1.7; color: var(--text); }
+.doc-body > h2 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem; color: var(--primary-dark);
+  margin: 2.25rem 0 0.4rem;
+  padding-bottom: 0.4rem; border-bottom: 2px solid var(--border);
+}
+.doc-body > h2 .sec-num { color: var(--accent); margin-right: 0.5rem; }
+.doc-body h3 { font-size: 1.05rem; color: var(--dark); margin: 1.5rem 0 0.4rem; }
+.doc-body p { margin-bottom: 0.9rem; }
+.doc-body ul, .doc-body ol { padding-left: 1.4rem; margin-bottom: 0.9rem; }
+.doc-body li { margin-bottom: 0.35rem; }
+.doc-body strong { color: var(--dark); }
+.doc-body code {
+  font-family: 'Consolas', 'Menlo', monospace; font-size: 0.85em;
+  background: var(--light); border: 1px solid var(--border);
+  border-radius: 4px; padding: 0.1em 0.4em; color: var(--primary-dark);
+}
+.doc-body pre {
+  background: var(--dark); color: #e8e8ef; border-radius: var(--radius);
+  padding: 1rem 1.2rem; overflow-x: auto; font-size: 0.82rem;
+  font-family: 'Consolas','Menlo',monospace; margin-bottom: 1rem; line-height: 1.55;
+}
+.doc-body pre code { background: none; border: none; color: inherit; padding: 0; }
+.doc-lead { font-size: 1.1rem; color: var(--text-light); line-height: 1.6; margin-bottom: 1.5rem; }
+
+/* Section eyebrow tag */
+.doc-tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem;
+}
+
+/* Numbered step list (training / how-to) */
+.steps { list-style: none; padding-left: 0; counter-reset: step; }
+.steps > li {
+  position: relative; padding: 0 0 1.1rem 3rem; margin: 0;
+  border-left: 2px solid var(--border); margin-left: 1rem;
+}
+.steps > li:last-child { border-left-color: transparent; padding-bottom: 0; }
+.steps > li::before {
+  counter-increment: step; content: counter(step);
+  position: absolute; left: -1rem; top: -0.15rem;
+  width: 2rem; height: 2rem; border-radius: 50%;
+  background: var(--primary); color: #fff;
+  font-family: var(--font-heading); font-weight: 700; font-size: 0.9rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.steps > li .step-title { font-family: var(--font-heading); font-weight: 600; color: var(--dark); display: block; margin-bottom: 0.2rem; }
+
+/* Callout boxes */
+.callout {
+  border-radius: var(--radius); padding: 1rem 1.25rem; margin: 1.25rem 0;
+  border-left: 4px solid var(--primary); background: var(--light);
+  font-size: 0.9rem;
+}
+.callout .callout-label {
+  font-family: var(--font-heading); font-weight: 700; font-size: 0.78rem;
+  letter-spacing: 0.5px; text-transform: uppercase; display: block; margin-bottom: 0.3rem;
+  color: var(--primary);
+}
+.callout.tip  { border-left-color: #2e7d4f; background: #f0f7f1; }
+.callout.tip  .callout-label { color: #2e7d4f; }
+.callout.warn { border-left-color: var(--accent); background: #fdf1ee; }
+.callout.warn .callout-label { color: var(--accent); }
+.callout.note { border-left-color: var(--purple); background: var(--purple-pale); }
+.callout.note .callout-label { color: var(--purple); }
+
+/* Table of contents */
+.doc-toc {
+  background: var(--light); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin-bottom: 2rem;
+}
+.doc-toc h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); margin-bottom: 0.6rem; }
+.doc-toc ol { padding-left: 1.2rem; margin: 0; }
+.doc-toc li { margin-bottom: 0.3rem; font-size: 0.9rem; }
+.doc-toc a { color: var(--primary-dark); }
+
+/* Print toolbar (screen only) */
+.doc-toolbar {
+  max-width: 8.5in; margin: 1rem auto 0; display: flex; gap: 0.75rem;
+  justify-content: flex-end; align-items: center;
+}
+.doc-toolbar .hint { margin-right: auto; font-size: 0.82rem; color: var(--text-light); }
+.doc-toolbar button {
+  font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem;
+  padding: 0.6rem 1.3rem; border-radius: var(--radius); border: 2px solid var(--primary);
+  background: var(--primary); color: #fff; cursor: pointer;
+}
+
+/* ============================================================
+   PRINT RULES
+   ============================================================ */
+@media print {
+  body { background: var(--white); }
+  .no-print, .doc-toolbar { display: none !important; }
+  .doc {
+    width: auto;
+    min-height: auto;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+  [contenteditable]:hover, [contenteditable]:focus { outline: none; background: none; }
+  /* Full-bleed cover prints to page edges */
+  .doc-cover { margin: -0.75in -0.75in 1.5rem; padding: 1.5in 0.75in 1.1in; }
+  /* Avoid awkward page breaks */
+  .doc-body h2, .doc-body h3 { break-after: avoid; }
+  .callout, .steps > li, table, pre, figure { break-inside: avoid; }
+  @page { size: letter; margin: 0.75in; }
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="doc-toolbar no-print">
+    <span class="hint">Proposal · Print → Save as PDF (US Letter, headers/footers off).</span>
+    <button onclick="window.print()">Print / Save PDF</button>
+  </div>
+
+  <div class="doc">
+
+    <!-- COVER -->
+    <div class="doc-cover">
+      <div class="jai-lockup" style="font-size:1.5rem;">
+        <img class="jai-mark-img" src="data:image/png;base64,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" alt="Jeong AI">
+        <span class="jai-logo jai-logo--reverse"><span class="jai-mark">Jeong</span><span class="jai-auto">AI</span></span>
+      </div>
+      <div class="doc-kicker" style="margin-top:1.5rem;">Client Proposal</div>
+      <h1>Building a Powerful Web Presence for Nexsys Electric LLC</h1>
+      <div class="accent"></div>
+      <p class="subtitle">A complete digital foundation for a growing electrical contractor in Idaho Falls &amp; SE Idaho, Google Business Profile, website, review system, Local Services Ads, and ongoing SEO.</p>
+      <div class="doc-meta-inline">
+        Prepared by <strong>Jeong AI</strong> &nbsp;·&nbsp; June 30, 2026 &nbsp;·&nbsp; Version 1.0
+      </div>
+    </div>
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="doc-toc">
+      <h3>Contents</h3>
+      <ol>
+        <li><a href="#s1">Executive Summary</a></li>
+        <li><a href="#s2">Situation Analysis</a></li>
+        <li><a href="#s3">Scope of Work</a></li>
+        <li><a href="#s4">Timeline</a></li>
+        <li><a href="#s5">Investment</a></li>
+        <li><a href="#s6">Social Media</a></li>
+        <li><a href="#s7">Why Jeong AI</a></li>
+      </ol>
+    </div>
+
+    <!-- BODY -->
+    <div class="doc-body">
+
+      <p class="doc-lead">Nexsys Electric LLC is a licensed electrical contractor with real capability and happy customers, but right now, none of that is visible online. This proposal outlines the work required to build a complete, durable web presence that generates leads, builds reputation, and positions Nexsys as the go-to electrician for commercial and residential work across SE Idaho.</p>
+
+      <!-- SECTION 1 -->
+      <h2 id="s1"><span class="sec-num">01</span>Executive Summary</h2>
+      <p>Nexsys Electric has no website, no Google Business Profile, and no searchable presence beyond a Facebook page. In a market where customers search "electrician Idaho Falls" or "electrical panel replacement Pocatello" before calling anyone, that invisibility directly costs jobs.</p>
+      <p>The good news: the local bar is low. A competitive scan of SE Idaho electricians — including the three competitors Nexsys named (Mountain Valley Electric, Nelson Electric, and Teton Panel Shop) plus three additional top-reviewed locals — shows that <strong>no pure electrical contractor in this market has a strong web presence</strong>. The leader in reviews among direct competitors has 161. Mountain Valley Electric is the only one with city-targeted pages and a blog. Nelson Electric, Teton Panel Shop, and Inrush Electric have minimal or no websites at all.</p>
+      <p>This means Nexsys can enter the market and lead it digitally within 90 days, with the right foundation in place from the start.</p>
+
+      <div class="callout tip">
+        <span class="callout-label">The Opportunity</span>
+        The dominant market player, First Call Jewel, has 2,598 reviews, but they are a multi-trade HVAC, plumbing, and electrical company. A dedicated electrical contractor with a strong web presence and focused review strategy can own the pure electrical category in this market.
+      </div>
+
+      <!-- SECTION 2 -->
+      <h2 id="s2"><span class="sec-num">02</span>Situation Analysis</h2>
+
+      <h3>Where Nexsys Stands Today</h3>
+      <ul>
+        <li><strong>Google Business Profile:</strong> Not claimed. The business does not appear in Google Search or Google Maps for electrical searches in Idaho Falls or surrounding areas.</li>
+        <li><strong>Website:</strong> None. Customers who hear the name Nexsys Electric have no landing page, no service list, no way to request a quote.</li>
+        <li><strong>Reviews:</strong> Not measurable on Google, there is no profile to leave a review on. Facebook presence exists but is not a substitute for Google in the local service search flow.</li>
+        <li><strong>Paid search:</strong> No presence on Google Local Services Ads or standard paid search.</li>
+      </ul>
+
+      <h3>What Competitors Are Doing</h3>
+      <table class="doc-table">
+        <thead>
+          <tr>
+            <th style="width:30%;">Competitor</th>
+            <th style="width:14%;" class="num">Stars</th>
+            <th style="width:14%;" class="num">Reviews</th>
+            <th>Web Presence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="item-title">First Call Jewel<div class="item-desc">Multi-trade: HVAC, Plumbing &amp; Electrical</div></td>
+            <td class="num">4.8</td>
+            <td class="num">2,598</td>
+            <td>Full site, not an apples-to-apples competitor</td>
+          </tr>
+          <tr>
+            <td class="item-title">Inrush Electric LLC</td>
+            <td class="num">4.9</td>
+            <td class="num">161</td>
+            <td>No website, Facebook only — same position as Nexsys today</td>
+          </tr>
+          <tr>
+            <td class="item-title">Sunlight Electric</td>
+            <td class="num">5.0</td>
+            <td class="num">159</td>
+            <td>4 service pages (incl. solar &amp; generators); no city pages, no blog</td>
+          </tr>
+          <tr>
+            <td class="item-title">Mountain Valley Electric</td>
+            <td class="num">4.8</td>
+            <td class="num">138</td>
+            <td>8 service pages, 5 city pages (Idaho Falls, Rexburg, Rigby, Blackfoot, Jackson WY), 25+ blog posts — most developed site in market</td>
+          </tr>
+          <tr>
+            <td class="item-title">Wheeler Electric, Inc.</td>
+            <td class="num">4.7</td>
+            <td class="num">127</td>
+            <td>2 service pages; skews commercial/industrial (UL 508A); no city pages, no blog</td>
+          </tr>
+          <tr>
+            <td class="item-title">Teton Panel Shop</td>
+            <td class="num">4.5</td>
+            <td class="num">37</td>
+            <td>1 service page (tetonpanelshop.com); no city pages, no blog — minimal site</td>
+          </tr>
+          <tr>
+            <td class="item-title">Nelson Electric</td>
+            <td class="num">4.1</td>
+            <td class="num">14</td>
+            <td>1 service page (nelson-electricllc.com); no city pages, no blog — minimal site</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout note">
+        <span class="callout-label">Key Insight</span>
+        No pure electrician in SE Idaho has more than 161 Google reviews. Only Mountain Valley Electric has city-targeted pages, and no competitor — including them — has claimed city pages for Ammon, Pocatello, Chubbuck, Shelley, or St. Anthony. Building a full-featured site and Google presence now gives Nexsys a durable first-mover advantage in the towns competitors aren't even trying to rank for.
+      </div>
+
+      <!-- SECTION 3 -->
+      <h2 id="s3"><span class="sec-num">03</span>Scope of Work</h2>
+      <p>The work is organized into four phases, delivered in sequence. Each builds on the last. Nothing is optional, they form a complete system.</p>
+
+      <h3>Phase 1, Google Business Profile Setup</h3>
+      <ol class="steps">
+        <li>
+          <span class="step-title">Claim &amp; Verify the GBP</span>
+          Claim Nexsys Electric LLC on Google Business (business.google.com), complete verification (postcard or phone), and establish the profile as the authoritative digital anchor for the business.
+        </li>
+        <li>
+          <span class="step-title">Fully Optimize the Profile</span>
+          Set primary category to Electrician, add secondary categories (electrical panel, commercial electrician), write a keyword-rich business description, upload photos, set service areas for Idaho Falls, Ammon, Pocatello, Blackfoot, Rexburg, Rigby, and Shelley, and add all services including panel upgrades, commercial electrical, and residential wiring.
+        </li>
+        <li>
+          <span class="step-title">Connect &amp; Configure</span>
+          Link the GBP to the new website once built, set up messaging, add Q&amp;A content for common electrical questions, and verify business hours and contact info are accurate across the profile.
+        </li>
+      </ol>
+
+      <h3>Phase 2, Website Build</h3>
+      <p>A focused, fast, SEO-ready website structured to rank for the searches that generate electrical service calls in SE Idaho.</p>
+      <ol class="steps">
+        <li>
+          <span class="step-title">Core Service Pages</span>
+          Dedicated pages for each primary service: Residential Electrical, Commercial Electrical, Electrical Panel Upgrades &amp; Replacements, Wiring &amp; Rewiring, EV Charger Installation, and Lighting. Each page is written to rank for its service type in the Idaho Falls market.
+        </li>
+        <li>
+          <span class="step-title">City / Location Pages</span>
+          Individual pages for each key SE Idaho market: Idaho Falls, Ammon, Pocatello, Blackfoot, Rexburg, Rigby, and Shelley. Each page targets "[service] in [city]" search queries and links back to relevant service pages, creating a local SEO mesh.
+        </li>
+        <li>
+          <span class="step-title">Trust-Building Pages</span>
+          About page (Nexsys story, licensing, insurance, values), a contact page with embedded map and quote request form, and a reviews showcase page that pulls in and displays Google reviews to reinforce credibility.
+        </li>
+        <li>
+          <span class="step-title">Technical Foundation</span>
+          Mobile-first design, fast load times (&lt;2s on 4G), SSL/HTTPS, structured data markup (LocalBusiness schema), Google Analytics and Search Console connected, sitemap submitted. The site is built to rank, not just look good.
+        </li>
+      </ol>
+
+      <h3>Phase 3, Review Generation System</h3>
+      <ol class="steps">
+        <li>
+          <span class="step-title">Review Request Workflow</span>
+          A simple, repeatable post-job process: a direct Google review link sent via text message after every completed job. We write the message template and set up a shortlink so it takes 15 seconds per job to send.
+        </li>
+        <li>
+          <span class="step-title">Target &amp; Tracking</span>
+          Set a 90-day goal of 50 reviews to establish market presence, and a 6-month goal of 150 to match or exceed every pure electrical competitor in SE Idaho. We set up tracking in a simple dashboard so the count is always visible.
+        </li>
+        <li>
+          <span class="step-title">Response Templates</span>
+          Pre-written templates for responding to positive and negative reviews in the Nexsys voice, professional, warm, and specific. Responding to reviews signals quality and care to both Google's algorithm and prospective customers reading them.
+        </li>
+      </ol>
+
+      <h3>Phase 4, Google Local Services Ads (LSA)</h3>
+      <ol class="steps">
+        <li>
+          <span class="step-title">Verification &amp; Setup</span>
+          Complete the Google Guaranteed verification process: license submission, insurance verification, and background check. This unlocks the LSA badge, which displays above all standard search results and organic listings.
+        </li>
+        <li>
+          <span class="step-title">Campaign Configuration</span>
+          Set up the LSA campaign for Idaho Falls and the surrounding SE Idaho service area. Configure service types (panels, residential, commercial), budget, and lead type preferences. LSAs charge per verified lead, not per click, the most efficient paid channel for local service businesses.
+        </li>
+        <li>
+          <span class="step-title">Ongoing Optimization</span>
+          Monthly review of lead quality, disputed charge processing, and bid adjustments. As review count grows, LSA rankings improve automatically, the system rewards reputation.
+        </li>
+      </ol>
+
+      <h3>Ongoing, Local SEO &amp; Presence Maintenance</h3>
+      <p>A one-time build fades. Monthly maintenance keeps the presence compounding:</p>
+      <ul>
+        <li>GBP posts (2 per month), job spotlights, seasonal tips, panel upgrade reminders</li>
+        <li>Review monitoring and response within 48 hours</li>
+        <li>Monthly search ranking report for core keywords</li>
+        <li>Quarterly site content refresh, new city pages, updated service descriptions, blog posts targeting SE Idaho electrical questions</li>
+        <li>Citation building and NAP consistency audit (ensuring Nexsys name, address, and phone are consistent across directories)</li>
+      </ul>
+
+      <div class="callout warn">
+        <span class="callout-label">Important</span>
+        Local SEO is not a one-time project. The businesses that dominate local search results maintain consistent activity, reviews, content, GBP updates, over time. The monthly retainer is what makes the initial investment compound rather than decay.
+      </div>
+
+      <h3>Phase 5, Social Media Presence</h3>
+      <p>A website and Google profile get Nexsys found when someone is already searching. Social media keeps the name visible in between, in the local feeds, neighborhood groups, and home improvement conversations where work gets recommended before anyone opens Google. For a new business, that ambient visibility builds the trust that converts a cold search into a call.</p>
+      <ol class="steps">
+        <li>
+          <span class="step-title">Profile Setup &amp; Optimization</span>
+          Optimize the existing Facebook Business page (categories, services, cover image, contact info, booking link). Create and connect an Instagram Business profile. Set up a verified Nextdoor Business profile, the highest-trust platform for local service referrals, where neighbors actively ask "who's a good electrician near me?"
+        </li>
+        <li>
+          <span class="step-title">Branded Content Templates</span>
+          Build a reusable set of on-brand post templates in the Nexsys visual style, job spotlights, tips, service announcements, and review highlights. Consistent look across all three platforms from day one.
+        </li>
+        <li>
+          <span class="step-title">Monthly Content &amp; Management</span>
+          10 posts per month on Facebook and Instagram, before/after job photos, electrical tips, local presence posts, seasonal content, and review shoutouts. 2 posts per month on Nextdoor. Captions written in plain language the owner would actually use. Comment and DM monitoring on weekdays.
+        </li>
+        <li>
+          <span class="step-title">Monthly Reporting</span>
+          A short monthly summary: reach, follows, engagement, and any notable interactions. No jargon, just what's working and what the next month's content will focus on.
+        </li>
+      </ol>
+
+      <!-- SECTION 4 -->
+      <h2 id="s4"><span class="sec-num">04</span>Timeline</h2>
+      <table class="doc-table">
+        <thead>
+          <tr>
+            <th style="width:22%;">Timeframe</th>
+            <th>Deliverables</th>
+            <th style="width:28%;">Outcome</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="item-title">Week 1</td>
+            <td>GBP claimed, verified, and fully optimized. Review request system live. Social media profiles set up and optimized (Facebook, Instagram, Nextdoor).</td>
+            <td>Nexsys appears on Google Maps and across social platforms. First reviews start coming in. First social posts go live.</td>
+          </tr>
+          <tr>
+            <td class="item-title">Weeks 2-4</td>
+            <td>Website designed, built, and launched. GBP linked. Analytics connected.</td>
+            <td>Customers have a destination. Site begins indexing for local keywords.</td>
+          </tr>
+          <tr>
+            <td class="item-title">Weeks 3-5</td>
+            <td>LSA application submitted. License and insurance docs collected and uploaded.</td>
+            <td>Verification in progress. LSAs live as soon as Google approves (typically 2-4 weeks).</td>
+          </tr>
+          <tr>
+            <td class="item-title">Month 2</td>
+            <td>First city pages live. GBP posting begins. First ranking report delivered.</td>
+            <td>Site starts to rank for city + service combinations. LSAs generating leads.</td>
+          </tr>
+          <tr>
+            <td class="item-title">Month 3</td>
+            <td>50-review milestone targeted. Remaining city pages complete. First content refresh.</td>
+            <td>Nexsys matches or exceeds all pure electrical competitors in review count and SEO structure.</td>
+          </tr>
+          <tr>
+            <td class="item-title">Months 4-6</td>
+            <td>Ongoing SEO, posts, reviews. Quarterly content update. Ranking growth tracked.</td>
+            <td>Compounding organic rankings. Consistent inbound lead flow from search and LSAs.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- SECTION 5 -->
+      <h2 id="s5"><span class="sec-num">05</span>Investment</h2>
+      <table class="doc-table">
+        <thead>
+          <tr>
+            <th style="width:40%;">Service</th>
+            <th>Description</th>
+            <th style="width:18%;" class="num">Investment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="item-title">Google Business Profile Setup</td>
+            <td><span class="item-desc">Claim, verify, full optimization, categories, services, photos, service areas, Q&amp;A, GBP-to-site link</span></td>
+            <td class="num">$350</td>
+          </tr>
+          <tr>
+            <td class="item-title">Website Build</td>
+            <td><span class="item-desc">6 service pages, 7 city/location pages, About, Contact, Reviews showcase. Mobile-first, fast, schema markup, Analytics + Search Console, SSL</span></td>
+            <td class="num">$2,800</td>
+          </tr>
+          <tr>
+            <td class="item-title">Review Generation System</td>
+            <td><span class="item-desc">Post-job text workflow, direct review link, response templates, 90-day tracking dashboard</span></td>
+            <td class="num">$250</td>
+          </tr>
+          <tr>
+            <td class="item-title">LSA Setup &amp; Launch</td>
+            <td><span class="item-desc">Google Guaranteed verification management, campaign configuration, service area and budget setup</span></td>
+            <td class="num">$400</td>
+          </tr>
+          <tr>
+            <td class="item-title">Monthly Retainer, Ongoing SEO</td>
+            <td><span class="item-desc">GBP posts, review monitoring &amp; response, ranking reports, quarterly content refresh, citation maintenance</span></td>
+            <td class="num">$450/mo</td>
+          </tr>
+          <tr>
+            <td class="item-title">Social Media Setup</td>
+            <td><span class="item-desc">Facebook optimization, Instagram Business profile creation, Nextdoor Business verification, branded content templates</span></td>
+            <td class="num">$299</td>
+          </tr>
+          <tr>
+            <td class="item-title">Monthly Social Media Management</td>
+            <td><span class="item-desc">10 posts/month on Facebook &amp; Instagram, 2 Nextdoor posts, comment &amp; DM monitoring, monthly performance report</span></td>
+            <td class="num">$299/mo</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="doc-totals">
+        <div class="row">
+          <span class="label">One-Time Setup Total</span>
+          <span>$4,099</span>
+        </div>
+        <div class="row">
+          <span class="label">Monthly Retainer (SEO + Social)</span>
+          <span>$749/mo</span>
+        </div>
+        <div class="row grand">
+          <span class="label">First-Year Investment</span>
+          <span>$13,087</span>
+        </div>
+      </div>
+
+      <div class="callout note" style="margin-top:1.5rem;">
+        <span class="callout-label">Note on Ad Spend</span>
+        Google Local Services Ads charges per verified lead, typically $25-$65 per electrical lead in this market. Ad spend is separate from the above and paid directly to Google. We recommend starting with $300-$500/month in LSA budget once the campaign is live. We manage the campaign; Google bills the ad spend directly to your account.
+      </div>
+
+      <!-- SECTION 6 -->
+      <h2 id="s6"><span class="sec-num">06</span>Social Media</h2>
+      <p>A website and Google profile get Nexsys found when someone is actively searching. Social media builds recognition before that search ever happens, in local feeds, neighborhood groups, and the everyday conversations where electrical work gets recommended by word of mouth. This section summarizes the social strategy included in this scope.</p>
+
+      <h3>Platforms</h3>
+      <table class="doc-table">
+        <thead>
+          <tr><th style="width:22%;">Platform</th><th>Role</th><th style="width:30%;">Content Focus</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="item-title">Facebook</td>
+            <td>Primary channel. Nexsys already has a page here, we optimize and run it consistently.</td>
+            <td>Job spotlights, tips, service announcements, review highlights</td>
+          </tr>
+          <tr>
+            <td class="item-title">Instagram</td>
+            <td>Visual credibility. Before/after panel photos and finished job content perform well with homeowners.</td>
+            <td>Before/after photos, crew photos, project highlights</td>
+          </tr>
+          <tr>
+            <td class="item-title">Nextdoor</td>
+            <td>Highest-trust local referral platform. Neighbors ask for tradespeople here by name.</td>
+            <td>Service area posts, neighborhood introductions, local promos</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>What We Post (Monthly)</h3>
+      <ul>
+        <li><strong>Job spotlights</strong>, before/after panel upgrades, commercial installs, new construction wiring</li>
+        <li><strong>Educational tips</strong>, when to upgrade a panel, GFCI requirements, seasonal electrical prep</li>
+        <li><strong>Local presence</strong>, "now serving [city]" posts, SE Idaho community content, service area graphics</li>
+        <li><strong>Reputation builders</strong>, Google review highlights, team posts, licensing and insurance mentions</li>
+      </ul>
+
+      <div class="callout note">
+        <span class="callout-label">Why Nextdoor Matters</span>
+        No pure electrician competitor in SE Idaho appears to have an active Nextdoor Business presence. When a homeowner posts "anyone know a good electrician in Idaho Falls?", a verified Nextdoor Business profile puts Nexsys directly in that conversation. It's one of the least competitive, highest-trust channels available to a local contractor right now.
+      </div>
+
+      <!-- SECTION 7 -->
+      <h2 id="s7"><span class="sec-num">07</span>Why Jeong AI</h2>
+      <p>We built this proposal from real data, not a template. The competitor scan that informed every recommendation in this document was pulled live, Google Places ratings, website structure maps, ad transparency checks, for Nexsys and six competitors in the Idaho Falls market — including the three Nexsys named directly. That's how we work.</p>
+
+      <ul>
+        <li><strong>No fluff, no filler.</strong> Every deliverable in this scope exists because it moves the needle for a local service business. We don't add services to inflate a proposal.</li>
+        <li><strong>Local service is our focus.</strong> We build for electricians, plumbers, HVAC contractors, roofers, businesses where Google Business Profile, reviews, and local SEO determine who gets the call. We know the channels that matter here.</li>
+        <li><strong>We write in plain language.</strong> Reports, recommendations, and monthly updates are written for a busy owner, not an SEO agency audience. You'll always know what was done and why.</li>
+        <li><strong>We stay.</strong> The monthly retainer is how we maintain the presence we build. We don't hand off a website and disappear, we're accountable for the results over time.</li>
+      </ul>
+
+      <div class="callout tip">
+        <span class="callout-label">Ready to Start</span>
+        The fastest path to leads is getting the Google Business Profile live. We can begin that this week, no website needed to start. Contact us at <strong>derrick@jeongai.com</strong> or <strong>(801) 695-5673</strong> and we'll send a simple agreement to get moving.
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="doc-footer">
+      <p>Jeong AI &nbsp;·&nbsp; A division of EBYG Media LLC &nbsp;·&nbsp; derrick@jeongai.com &nbsp;·&nbsp; (801) 695-5673 &nbsp;·&nbsp; jeongai.com</p>
+      <p class="tagline">Consistent presence. Genuine care. Quiet reliability.</p>
+    </div>
+
+  </div>
+</body>
+</html>
